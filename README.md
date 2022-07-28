@@ -10,7 +10,7 @@ A simple WebHook written in Node to perform test on web pages.
 ## Install
 
 ###     Clone the Project
-        git clone https://github.com/TheoM83/SimpleHook
+        $git clone https://github.com/TheoM83/SimpleHook
         
 ###     Modify Parameters in Hook.js
         //Parameters
@@ -18,6 +18,6 @@ A simple WebHook written in Node to perform test on web pages.
         const port = 4444;
         
  ###    Run the Script
-        node Hook.js
+        $node Hook.js
         
         
