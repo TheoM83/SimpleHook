@@ -1,7 +1,8 @@
 const http = require("http");
+const FormData = require('form-data');
 
 //Parameters
-const host = 'your.ip';
+const host = '192.168.1.28';
 const port = 4444;
 
 const requestListener = function (req, res) {
@@ -20,14 +21,16 @@ const requestListener = function (req, res) {
 	process.stdout.write(req.method + ' from ' + req.socket.remoteAddress + '\n');
 	process.stdout.write(`http://${host}:${port}`+ req.url + '\n\n')
 
-	process.stdout.write('parameters : ' + '\n');
 	let params = req.url.split('?');
 	params = params[1]
-	params = params.split('&')
-	params.forEach(element => {
-		sub = element.split('=')
-		process.stdout.write('  ' + sub[0] + ' = ' + sub[1] + '\n');
-	  });
+	if (params !== undefined) {
+		process.stdout.write('parameters : ' + '\n');
+		params = params.split('&')
+		params.forEach(element => {
+			sub = element.split('=')
+			process.stdout.write('  ' + sub[0] + ' = ' + sub[1] + '\n');
+		});
+	}
 	process.stdout.write('\n\n')
 };
 
@@ -35,5 +38,3 @@ const server = http.createServer(requestListener);
 server.listen(port, host, () => {
 	process.stdout.write('\n' + `WebHook at http://${host}:${port}` + '\n\n');
 });
-
-
